@@ -5,14 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>نرم افزار چت</title>
+    <link rel="stylesheet" href="./css/style.css" />
 </head>
-<body>
-    <h3>Active Chat</h3>
-    <ol id="messages"></ol>
-    <form id="message-form">
-        <input type="text" placeholder="message" name="message" />
-        <button type="submit">send</button>
-    </form>
+<body class="chat">
+    <div class="chat__sidebar">
+        <h3>People</h3>
+        <div id="users"></div>
+    </div>
+    <div class="chat__main">
+        <ol class="chat__messages"  id="messages"></ol>
+        <div class="chat__footer">
+            <form id="message-form">
+                <input type="text" placeholder="Message" name="message" autofocus autocomplete="false" />
+                <button type="submit">Send</button>
+                <button type="button" id="send-location">Send Location</button>
+            </form>
+        </div>
+    </div>
 
     <script src="lib/jquery-3.6.0.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
