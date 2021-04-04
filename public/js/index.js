@@ -7,11 +7,16 @@ socket.on('disconnect', function(){
 })
 
 socket.on('newMessage', function(message){
-    console.log('new messgae',message);
+    var template = $('#message-template').html();
+    var formatedDate = moment(message.createdAt).format('hh:mm a');
 
-    var li = $('<li></li>');
-    li.text(`${message.from}: ${message.text}`);
-    $('#messages').append(li);
+    var html = Mustache.render(template,{
+        text:message.text,
+        from:message.from,
+        createdAt:formatedDate
+    });
+
+    $('#messages').append(html);
 })
 
 $('#message-form').on('submit', function(e){
@@ -44,11 +49,14 @@ $('#send-location').on('click', function(){
 })
 
 socket.on('newLocationMessage', function(message){
-    var li = $('<li></li>');
-    var a = $('<a target="_blank">my current location</a>');
+    var formatedDate = moment(message.createdAt).format('hh:mm a');
+    var template = $('#location-message-template').html();
+    var formatedDate = moment(message.createdAt).format('hh:mm a');
 
-    li.text(`${message.from}: `);
-    a.attr('href', message.url);
-    li.append(a)
-    $('#messages').append(li);
+    var html = Mustache.render(template,{
+        url:message.url,
+        from:message.from,
+        createdAt:formatedDate
+    });
+    $('#messages').append(html);
 })
