@@ -1,7 +1,21 @@
+
 var socket = io();
+
 socket.on('connect',function(){
     console.log('connected to server!');
+    var params = jQuery.deparam(window.location.search);
+
+    socket.emit('join', params, function(err){
+        if(err){
+            alert(err);
+            window.location.href ="/";
+        }
+        else{
+            console.log('no error');
+        }
+    })
 })
+
 socket.on('disconnect', function(){
     console.log('disconnect from server!');
 })
@@ -11,7 +25,6 @@ function scrollFunction(){
     var newMessage = messages.children('li:last-child');
   
     //Heights
-    debugger;
     var scrollHeight = messages.prop('scrollHeight');
     var scrollTop = messages.prop('scrollTop');
     var clientHeight = messages.prop('clientHeight');

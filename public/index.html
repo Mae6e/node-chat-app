@@ -7,49 +7,26 @@
     <title>نرم افزار چت</title>
     <link rel="stylesheet" href="./css/style.css" />
 </head>
-<body class="chat">
-    <div class="chat__sidebar">
-        <h3>People</h3>
-        <div id="users"></div>
+<body class="centered-form" dir="rtl">
+    <div class="centered-form__form">
+        <form action="chat.html">
+            <div class="form-field">
+                <h3>ورود به چت روم</h3>
+            </div>
+            <div class="form-field">
+              <label>نام شما</label>
+              <input type="text" name="name" autofocus />
+            </div>
+            <div class="form-field">
+                <label>اتاق</label>
+                <input type="text" name="room" />
+              </div>
+              <div class="form-field">
+                <button>ورود</button>
+              </div>
+        </form>
     </div>
-    <div class="chat__main">
-        <ol class="chat__messages"  id="messages"></ol>
-        <div class="chat__footer">
-            <form id="message-form">
-                <input type="text" placeholder="Message" name="message" autofocus autocomplete="false" />
-                <button type="submit">Send</button>
-                <button type="button" id="send-location">Send Location</button>
-            </form>
-        </div>
-    </div>
-    <script id="message-template" type="text/template">
-        <li class="message">
-            <div class="message__title">
-                <h4>{{from}}</h4>
-                <span>{{createdAt}}</span>
-            </div>
-            <div class="message__body">
-                <p>{{text}}</p>
-            </div>
-        </li>
-    </script>
-
-    <script id="location-message-template" type="text/template">
-        <li class="message">
-            <div class="message__title">
-                <h4>{{from}}</h4>
-                <span>{{createdAt}}</span>
-            </div>
-            <div class="message__body">
-                <p><a href="{{url}}" target="_blank">My Current Location</a></p>
-            </div>
-        </div>
-    </script>
 
     <script src="lib/jquery-3.6.0.min.js"></script>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="js/index.js"></script>
-    <script src="lib/moment.js"></script>
-    <script src="lib/mustache.min.js"></script>
 </body>
 </html>
